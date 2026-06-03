@@ -33,7 +33,7 @@ export default function Navbar() {
                         <span className="text-[#0A84FF]">hire</span>
 
                         <span className="relative inline-flex items-center">
-                            <span className="text-[#0A84FF]">G</span>
+                            <span className="text-[#0A84FF]">L</span>
 
                             {/* Orange Circle */}
                             <span className="absolute left-[13px] top-[8px] h-3 w-3 rounded-full bg-orange-500"></span>
@@ -42,7 +42,7 @@ export default function Navbar() {
                             <span className="absolute left-[5px] top-[8px] h-3 w-3 rounded-full bg-sky-400"></span>
                         </span>
 
-                        <span className="text-orange-500">op</span>
+                        <span className="text-orange-500">oop</span>
                     </h1>
                 </Link>
 
