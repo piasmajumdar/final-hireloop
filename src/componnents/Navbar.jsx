@@ -66,7 +66,7 @@ export default function Navbar() {
                     {/* Actions */}
                     <div className="flex items-center gap-6">
                         <Link
-                            href="/signin"
+                            href="/auth/signin"
                             className="text-lg font-medium text-[#6C63FF] hover:text-[#7d75ff]"
                         >
                             Sign In
@@ -109,7 +109,7 @@ export default function Navbar() {
                         <div className="my-2 h-px bg-white/10"></div>
 
                         <Link
-                            href="/signin"
+                            href="/auth/signin"
                             className="text-[#6C63FF]"
                             onClick={() => setIsOpen(false)}
                         >
