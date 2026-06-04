@@ -3,7 +3,7 @@
 import { Button, Input, Chip } from "@heroui/react";
 import { Magnifier, MapPin, Briefcase } from "@gravity-ui/icons";
 
-export default function HeroSection() {
+export default function HeroSearchSection() {
     return (
         <section className="relative overflow-hidden px-6 pb-50">
             {/* Background Glow */}

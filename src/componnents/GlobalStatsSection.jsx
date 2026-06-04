@@ -7,7 +7,7 @@ import {
     CircleInfo,
     Star,
 } from "@gravity-ui/icons";
-import HeroSection from "./HeroSection";
+import HeroSearchSection from "./HeroSearchSection";
 import FeaturedJobsSection from "./FeaturedJobsSection";
 
 const stats = [
@@ -56,7 +56,7 @@ export default function GlobalStatsSection() {
             <div className="relative z-10 mx-auto max-w-7xl px-6">
 
                 <div>
-                    <HeroSection></HeroSection>
+                    <HeroSearchSection></HeroSearchSection>
                 </div>
                 <div>
                     {/* Heading */}
