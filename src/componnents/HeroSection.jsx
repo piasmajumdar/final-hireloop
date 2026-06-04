@@ -37,84 +37,81 @@ export default function HeroSection() {
                     next role — faster.
                 </p>
 
-                {/* Search Box */}
-                <div className="mx-auto mt-12 max-w-5xl">
-                    <div className="flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-[#0d0d11] shadow-[0_0_50px_rgba(255,255,255,0.03)] md:flex-row">
+                {/* Search */}
+                <div className="mx-auto mt-14 max-w-6xl">
+                    <div className="flex h-[74px] items-center rounded-[24px] border border-white/15 bg-[#0B0B0E]/90 px-4 backdrop-blur-md">
 
                         {/* Job Search */}
-                        <div className="flex flex-1 items-center px-6">
-                            <Magnifier className="mr-3 h-6 w-6 text-white/50" />
+                        <div className="flex flex-1 items-center gap-4 px-4">
+                            <Magnifier
+                                className="text-white"
+                                width={28}
+                                height={28}
+                            />
 
-                            <Input
-                                variant="underlined"
+                            <input
+                                type="text"
                                 placeholder="Job title, skill or company"
-                                classNames={{
-                                    input:
-                                        "text-white placeholder:text-white/40",
-                                    inputWrapper:
-                                        "!bg-transparent shadow-none border-none",
-                                }}
+                                className="w-full bg-transparent text-lg text-white placeholder:text-white/50 focus:outline-none"
                             />
                         </div>
 
                         {/* Divider */}
-                        <div className="hidden w-px bg-white/10 md:block" />
+                        <div className="mx-4 hidden h-8 w-px bg-white/15 md:block" />
 
                         {/* Location */}
-                        <div className="flex flex-1 items-center px-6">
-                            <MapPin className="mr-3 h-6 w-6 text-white/50" />
+                        <div className="hidden flex-1 items-center gap-4 px-4 md:flex">
+                            <MapPin
+                                className="text-white"
+                                width={26}
+                                height={26}
+                            />
 
-                            <Input
-                                variant="underlined"
+                            <input
+                                type="text"
                                 placeholder="Location or Remote"
-                                classNames={{
-                                    input:
-                                        "text-white placeholder:text-white/40",
-                                    inputWrapper:
-                                        "!bg-transparent shadow-none border-none",
-                                }}
+                                className="w-full bg-transparent text-lg text-white placeholder:text-white/50 focus:outline-none"
                             />
                         </div>
 
                         {/* Search Button */}
-                        <div className="p-3">
-                            <Button
-                                isIconOnly
-                                className="h-14 w-14 rounded-2xl bg-[#5B5EF7] text-white"
-                            >
-                                <Magnifier className="h-6 w-6" />
-                            </Button>
-                        </div>
+                        <Button
+                            isIconOnly
+                            className="h-[54px] min-w-[54px] rounded-[18px] bg-[#5B5EF7] text-white hover:bg-[#696CFF]"
+                        >
+                            <Magnifier width={26} height={26} />
+                        </Button>
                     </div>
                 </div>
 
                 {/* Trending */}
-                <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-                    <span className="text-lg text-white/60">
+                <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+                    <span className="text-[18px] text-white/60">
                         Trending Position
                     </span>
 
                     <Chip
-                        variant="bordered"
-                        className="border-white/10 bg-white/5 text-white"
+                        radius="full"
+                        className="border border-white/10 bg-white/5 px-3 text-white"
                     >
                         Product Designer
                     </Chip>
 
                     <Chip
-                        variant="bordered"
-                        className="border-white/10 bg-white/5 text-white"
+                        radius="full"
+                        className="border border-white/10 bg-white/5 px-3 text-white"
                     >
                         AI Engineering
                     </Chip>
 
                     <Chip
-                        variant="bordered"
-                        className="border-white/10 bg-white/5 text-white"
+                        radius="full"
+                        className="border border-white/10 bg-white/5 px-3 text-white"
                     >
                         Dev-ops Engineer
                     </Chip>
                 </div>
+
             </div>
         </section>
     );
