@@ -55,6 +55,8 @@ export default function SignupPage() {
                     message: "Account created successfully! Redirecting...",
                 });
                 setFormData({ name: "", email: "", password: "" });
+                // Explicit client-side redirect after authentication succeeds
+                router.push("/");
             }
         } catch (err) {
             setStatus({
@@ -88,8 +90,8 @@ export default function SignupPage() {
                                 <Alert
                                     status={status.type === "danger" ? "danger" : "success"}
                                     className={`p-3 rounded-xl text-white ${status.type === "success"
-                                            ? "bg-green-600/20 border border-green-500/30"
-                                            : "bg-red-600/20 border border-red-500/30"
+                                        ? "bg-green-600/20 border border-green-500/30"
+                                        : "bg-red-600/20 border border-red-500/30"
                                         }`}
                                 >
                                     <div className="flex flex-col gap-0.5 w-full">

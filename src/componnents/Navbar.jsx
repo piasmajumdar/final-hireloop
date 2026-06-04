@@ -4,10 +4,18 @@ import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@heroui/react";
 import { Menu, X } from "lucide-react";
+import { signOut, useSession } from "@/lib/auth-client";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
 
+    const { data: session, isPending } = useSession();
+    console.log("Session data in Navbar:", session, "Is pending: ", isPending)
+    const user = session?.user;
+
+    const handleSignOut = async () => {
+        await signOut();
+    }
     const navItems = [
         {
             label: "Browse Jobs",
@@ -65,12 +73,25 @@ export default function Navbar() {
 
                     {/* Actions */}
                     <div className="flex items-center gap-6">
-                        <Link
-                            href="/auth/signin"
-                            className="text-lg font-medium text-[#6C63FF] hover:text-[#7d75ff]"
-                        >
-                            Sign In
-                        </Link>
+                        {user ?
+                            <>
+                                Hi, {user?.name}
+                                <Button
+                                    onClick={handleSignOut}
+                                    variant="ghost"
+                                    className="text-lg font-medium text-[#6C63FF] hover:text-[#7d75ff]"
+                                >
+                                    Sign Out
+
+                                </Button>
+                            </>
+                            :
+                            <Link
+                                href="/auth/signin"
+                                className="text-lg font-medium text-[#6C63FF] hover:text-[#7d75ff]"
+                            >
+                                Sign In
+                            </Link>}
 
                         <Button
                             as={Link}
