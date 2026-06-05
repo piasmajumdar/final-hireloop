@@ -29,9 +29,9 @@ export default function SignupPage() {
         setIsLoading(true);
         setStatus({ type: null, message: "" });
 
-        const { name, email, password } = formData;
+        const { name, email, password, role } = formData;
 
-        if (!name || !email || !password) {
+        if (!name || !email || !password || !role) {
             setStatus({ type: "danger", message: "All fields are required." });
             setIsLoading(false);
             return;
@@ -42,6 +42,7 @@ export default function SignupPage() {
                 email,
                 password,
                 name,
+                role,
                 callbackURL: "/",
             });
 
@@ -164,7 +165,7 @@ export default function SignupPage() {
 
                         <div className="flex flex-col gap-4">
                             <Label>You are a</Label>
-                            <RadioGroup defaultValue="seeker" name="role" orientation="horizontal">
+                            <RadioGroup defaultValue="seeker" name="role" onChange={value=>{setFormData({...formData, role: value})}} orientation="horizontal">
                                 <Radio value="seeker">
                                     <Radio.Control>
                                         <Radio.Indicator />
