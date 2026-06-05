@@ -1,4 +1,5 @@
 "use client";
+import { motion, useScroll, useMotionValueEvent } from "motion/react"
 
 import { useState } from "react";
 import Link from "next/link";
@@ -31,8 +32,27 @@ export default function Navbar() {
         },
     ];
 
+    const { scrollY } = useScroll()
+    const [hidden, setHidden] = useState(false)
+
+    useMotionValueEvent(scrollY, "change", (current) => {
+        const previous = scrollY.getPrevious() ?? 0
+        if (current > previous && current > 150) {
+            setHidden(true)
+        } else {
+            setHidden(false)
+        }
+    })
     return (
-        <header className="w-full bg-[#0b0b0f] px-4 py-4 md:px-8">
+        <motion.header
+            // ADDED: fixed top-0 left-0 z-50 to keep it pinned to the viewport
+            className="header fixed top-0 left-0 z-50 w-full bg-[#0b0b0f] px-4 py-4 md:px-8"
+            animate={{
+                y: hidden ? "-100%" : "0%", // CHANGED: Using percentages ensures it hides perfectly regardless of exact px height
+                opacity: hidden ? 0 : 1,
+            }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+        >
             <div className="mx-auto flex max-w-7xl items-center justify-between rounded-2xl border border-white/5 bg-[#111114]/90 px-6 py-4 backdrop-blur-lg">
 
                 {/* Logo */}
@@ -147,6 +167,6 @@ export default function Navbar() {
                     </nav>
                 </div>
             )}
-        </header>
+        </motion.header>
     );
 }

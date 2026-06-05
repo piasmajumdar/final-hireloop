@@ -35,7 +35,7 @@ const stats = [
 
 export default function GlobalStatsSection() {
     return (
-        <section className="relative overflow-hidden bg-black py-24">
+        <section className="relative overflow-hidden bg-black pb-24 pt-40">
             {/* Purple Glow */}
             <div className="absolute left-1/2 top-20 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-[#5B5EF7]/40 blur-[150px]" />
 
