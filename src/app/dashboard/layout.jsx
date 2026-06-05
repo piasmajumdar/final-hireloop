@@ -1,8 +1,10 @@
+import DashboardSideBar from "@/componnents/dashboard/DashboardSideBar";
 
 const DashBoardLayout = ({ children }) => {
     return (
-        <div className="pt-30">
-            <div>{children}</div>
+        <div className="pt-30 flex min-h-screen">
+            <DashboardSideBar></DashboardSideBar>
+            <div className="flex-1">{children}</div>
         </div>
     );
 };
