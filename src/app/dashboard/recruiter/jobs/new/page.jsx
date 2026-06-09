@@ -16,8 +16,8 @@ import {
     toast
 } from "@heroui/react";
 import { Briefcase, Globe } from "@gravity-ui/icons";
-// import { createJob } from "@/lib/actions/jobs";
-import { redirect } from "next/navigation";
+import { createJob } from "@/lib/actions/jobs";
+import { useRouter } from "next/navigation";
 
 export default function PostJobPage() {
     // Mock configuration for recruiter's authenticated state
@@ -29,6 +29,7 @@ export default function PostJobPage() {
 
     const [isRemote, setIsRemote] = useState(false);
     const [errors, setErrors] = useState({});
+    const router = useRouter()
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -40,7 +41,7 @@ export default function PostJobPage() {
 
         const formData = new FormData(e.currentTarget);
         const data = Object.fromEntries(formData.entries());
-        console.log(data)
+
         const newErrors = {};
         if (!data.jobTitle) newErrors.jobTitle = "Job title is required";
         if (!data.jobCategory) newErrors.jobCategory = "Job category is required";
@@ -59,21 +60,24 @@ export default function PostJobPage() {
 
         setErrors({});
 
-        // const payload = {
-        //     ...data,
-        //     isRemote,
-        //     companyId: mockCompany.id,
-        //     status: "active",
-        //     isPubliclyVisible: true,
-        // };
+        const payload = {
+            ...data,
+            isRemote,
+            companyId: mockCompany.id,
+            status: "active",
+            isPubliclyVisible: true,
+        };
 
-        // const res = await createJob(payload);
-        // if (res.insertedId) {
-        //     toast.success("Job posted successfully!");
-        //     e.target.reset();
-        //     setIsRemote(false);
-        //     redirect("/dashboard/recruiter/jobs");
-        // }
+        console.log("Submitting payload:", payload);
+
+        const res = await createJob(payload);
+
+        console.log("createJob response:", res); if (res.insertedId) {
+            toast.success("Job posted successfully!");
+            e.target.reset();
+            setIsRemote(false);
+            router.push("/dashboard/recruiter/jobs");
+        }
     };
 
     // Dark styles styled to match your image_988c20.png reference layout
@@ -120,8 +124,12 @@ export default function PostJobPage() {
                                 {errors.jobTitle && <FieldError className="text-xs text-danger mt-1">{errors.jobTitle}</FieldError>}
                             </TextField>
 
-                            <Select className={selectBoxClass} name="jobCategory" isInvalid={!!errors.jobCategory}>
-                                <Label className="text-zinc-400 font-medium text-sm mb-1 block">Job Category</Label>
+                            <Select
+                                className={selectBoxClass}
+                                name="jobCategory"
+                                aria-label="Job Category"
+                                isInvalid={!!errors.jobCategory}
+                            >                                <Label className="text-zinc-400 font-medium text-sm mb-1 block">Job Category</Label>
                                 <Select.Trigger className={triggerClasses}>
                                     <Select.Value className="text-white placeholder:text-zinc-600" />
                                     <Select.Indicator />
@@ -139,8 +147,12 @@ export default function PostJobPage() {
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <Select className={selectBoxClass} name="jobType" isInvalid={!!errors.jobType}>
-                                <Label className="text-zinc-400 font-medium text-sm mb-1 block">Job Type</Label>
+                            <Select
+                                className={selectBoxClass}
+                                name="jobType"
+                                aria-label="Job Type"
+                                isInvalid={!!errors.jobType}
+                            >                                <Label className="text-zinc-400 font-medium text-sm mb-1 block">Job Type</Label>
                                 <Select.Trigger className={triggerClasses}>
                                     <Select.Value />
                                     <Select.Indicator />
@@ -162,16 +174,28 @@ export default function PostJobPage() {
                                     <span className="text-zinc-400 font-medium text-sm block">Salary Range</span>
                                     <div className="flex gap-2">
                                         <TextField name="minSalary" isInvalid={!!errors.minSalary} className="w-full">
-                                            <Input placeholder="Min" type="number" className={textInputClass} />
-                                        </TextField>
+                                            <Input
+                                                aria-label="Minimum Salary"
+                                                placeholder="Min"
+                                                type="number"
+                                                className={textInputClass}
+                                            />                                        </TextField>
                                         <TextField name="maxSalary" isInvalid={!!errors.maxSalary} className="w-full">
-                                            <Input placeholder="Max" type="number" className={textInputClass} />
-                                        </TextField>
+                                            <Input
+                                                aria-label="Maximum Salary"
+                                                placeholder="Max"
+                                                type="number"
+                                                className={textInputClass}
+                                            />                                        </TextField>
                                     </div>
                                 </div>
 
-                                <Select className="w-full mt-6" name="currency" defaultSelectedKeys={["USD"]}>
-                                    <Select.Trigger className={triggerClasses}>
+                                <Select
+                                    className="w-full mt-6"
+                                    name="currency"
+                                    aria-label="Currency"
+                                    defaultSelectedKeys={["USD"]}
+                                >                                    <Select.Trigger className={triggerClasses}>
                                         <Select.Value />
                                         <Select.Indicator />
                                     </Select.Trigger>
@@ -193,6 +217,7 @@ export default function PostJobPage() {
 
                                     {/* Updated Switch using v3 Compound Component Syntax */}
                                     <Switch
+                                        aria-label="Remote Job"
                                         isSelected={isRemote}
                                         onChange={setIsRemote}
                                         size="sm"
@@ -221,7 +246,11 @@ export default function PostJobPage() {
 
                             <TextField name="deadline" isInvalid={!!errors.deadline} className="flex flex-col gap-1 w-full">
                                 <Label className="text-zinc-400 font-medium text-sm">Application Deadline</Label>
-                                <Input type="date" className={textInputClass} />
+                                <Input
+                                    aria-label="Application Deadline"
+                                    type="date"
+                                    className={textInputClass}
+                                />
                                 {errors.deadline && <FieldError className="text-xs text-danger mt-1">{errors.deadline}</FieldError>}
                             </TextField>
                         </div>
