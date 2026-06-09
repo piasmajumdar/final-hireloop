@@ -112,7 +112,7 @@ export default function CompanyProfile({ recruiter, recruiterCompany }) {
         console.log("Submitted Company Profile Data:", newCompanyData);
 
         const payload = await createCompany(newCompanyData);
-        console.log(payload)
+
         if (payload.insertedId) {
 
             toast.success("Company profile created successfully!");

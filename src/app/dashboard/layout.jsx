@@ -1,4 +1,4 @@
-import DashboardSideBar from "@/componnents/dashboard/DashboardSideBar";
+import DashboardSideBar from "@/components/dashboard/DashboardSideBar";
 
 const DashBoardLayout = ({ children }) => {
     return (

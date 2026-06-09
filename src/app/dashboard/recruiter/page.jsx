@@ -1,5 +1,5 @@
 "use client"
-import { DashboardStats } from "@/componnents/dashboard/DashboardStats";
+import { DashboardStats } from "@/components/dashboard/DashboardStats";
 import { useSession } from "@/lib/auth-client";
 import { File, Persons, Thunderbolt, CircleCheck, Briefcase, Bookmark, Eye } from "@gravity-ui/icons";
 

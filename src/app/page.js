@@ -1,5 +1,5 @@
-import FeaturedJobsSection from "@/componnents/FeaturedJobsSection";
-import GlobalStatsSection from "@/componnents/GlobalStatsSection";
+import FeaturedJobsSection from "@/components/FeaturedJobsSection";
+import GlobalStatsSection from "@/components/GlobalStatsSection";
 import Image from "next/image";
 
 export default function Home() {

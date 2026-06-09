@@ -1,5 +1,11 @@
+import { serverFetch } from "../core/server"
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
+
+
+export const getJobs = async()=>{
+    return await serverFetch('/api/jobs');
+}
 
 export const getCompanyJobs = async(companyId) =>{
     const res = await fetch(`${baseUrl}/api/jobs?companyId=${companyId}`)
