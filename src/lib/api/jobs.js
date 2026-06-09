@@ -7,6 +7,10 @@ export const getJobs = async()=>{
     return await serverFetch('/api/jobs');
 }
 
+export const getJobById = async(jobId)=>{
+    return serverFetch(`/api/jobs/${jobId}`)
+}
+
 export const getCompanyJobs = async(companyId) =>{
     const res = await fetch(`${baseUrl}/api/jobs?companyId=${companyId}`)
     return res.json()
