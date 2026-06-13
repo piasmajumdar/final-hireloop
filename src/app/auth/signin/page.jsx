@@ -12,7 +12,7 @@ export default function SignInPage() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const redirectTo = searchParams.get('redirect') || "/";
-    
+
     // Form States
     const [formData, setFormData] = useState({ email: "", password: "" });
     const [isVisible, setIsVisible] = useState(false);
@@ -156,7 +156,7 @@ export default function SignInPage() {
                     <div className="mt-6 text-center text-sm">
                         <span className="text-gray-500">New to Hire loop? </span>
                         <Link
-                            href="/auth/signup"
+                            href={`/auth/signup?redirect=${redirectTo}`}
                             className="text-blue-600 hover:text-blue-500 dark:text-blue-400 font-medium hover:underline"
                         >
                             Sign Up

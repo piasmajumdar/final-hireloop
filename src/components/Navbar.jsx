@@ -12,7 +12,7 @@ export default function Navbar() {
 
     const { data: session, isPending } = useSession();
     console.log("Session data in Navbar:", session, "Is pending: ", isPending)
-    const user = session?.user;
+    // const user = session?.user;
 
     const handleSignOut = async () => {
         await signOut();
@@ -92,35 +92,36 @@ export default function Navbar() {
                     <div className="h-6 w-px bg-white/10"></div>
 
                     {/* Actions */}
-                    <div className="flex items-center gap-6">
-                        {user ?
-                            <>
-                                Hi, {user?.name}
-                                <Button
-                                    onClick={handleSignOut}
-                                    variant="ghost"
+                    {isPending ? 'Loading...' :
+                        <div className="flex items-center gap-6">
+                            {session?.user ?
+                                <>
+                                    Hi, {session?.user?.name}
+                                    <Button
+                                        onClick={handleSignOut}
+                                        variant="ghost"
+                                        className="text-lg font-medium text-[#6C63FF] hover:text-[#7d75ff]"
+                                    >
+                                        Sign Out
+
+                                    </Button>
+                                </>
+                                :
+                                <Link
+                                    href="/auth/signin"
                                     className="text-lg font-medium text-[#6C63FF] hover:text-[#7d75ff]"
                                 >
-                                    Sign Out
+                                    Sign In
+                                </Link>}
 
-                                </Button>
-                            </>
-                            :
-                            <Link
-                                href="/auth/signin"
-                                className="text-lg font-medium text-[#6C63FF] hover:text-[#7d75ff]"
+                            <Button
+                                as={Link}
+                                href="/get-started"
+                                className="h-12 rounded-xl bg-[#5B5EF7] px-7 text-base font-semibold text-white hover:bg-[#6b6efc]"
                             >
-                                Sign In
-                            </Link>}
-
-                        <Button
-                            as={Link}
-                            href="/get-started"
-                            className="h-12 rounded-xl bg-[#5B5EF7] px-7 text-base font-semibold text-white hover:bg-[#6b6efc]"
-                        >
-                            Get Started
-                        </Button>
-                    </div>
+                                Get Started
+                            </Button>
+                        </div>}
                 </div>
 
                 {/* Mobile Menu Button */}

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Input, Button, Card, Alert } from "@heroui/react";
 // GravityUI icons
 import { Eye, EyeSlash, ArrowRight } from "@gravity-ui/icons";
@@ -11,6 +11,8 @@ import { Description, Label, Radio, RadioGroup } from "@heroui/react";
 
 export default function SignupPage() {
     const router = useRouter();
+    const searchParams = useSearchParams();
+    const redirectTo = searchParams.get('redirect');
 
     // Form States
     const [formData, setFormData] = useState({ name: "", email: "", password: "", role: "seeker" });
@@ -43,7 +45,6 @@ export default function SignupPage() {
                 password,
                 name,
                 role,
-                callbackURL: "/",
             });
 
             if (error) {
@@ -58,7 +59,7 @@ export default function SignupPage() {
                 });
                 setFormData({ name: "", email: "", password: "" });
                 // Explicit client-side redirect after authentication succeeds
-                router.push("/");
+                router.push(redirectTo);
             }
         } catch (err) {
             setStatus({
@@ -200,7 +201,7 @@ export default function SignupPage() {
                     <div className="mt-6 text-center text-sm">
                         <span className="text-gray-500">Already have an account? </span>
                         <Link
-                            href="/auth/signin"
+                            href={`/auth/signin?redirect=${redirectTo}`}
                             className="text-blue-600 hover:text-blue-500 dark:text-blue-400 font-medium hover:underline"
                         >
                             Sign In
