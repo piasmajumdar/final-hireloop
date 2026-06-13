@@ -4,20 +4,21 @@ import { ShieldExclamation } from "@gravity-ui/icons";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import JobApply from "./JobApply";
+import { getApplicationsByApplicant } from "@/lib/api/applications";
 
-const ApplyPage = async({params})=>{
+const ApplyPage = async ({ params }) => {
 
-    const {id} = await params;
-    
+    const { id } = await params;
+
     const user = await getUserSession();
     console.log(user)
 
-    if(!user){
+    if (!user) {
         redirect(`/auth/signin?redirect=/jobs/${id}/apply`)
     }
 
-    if(user.role !== 'seeker'){
-                return (
+    if (user.role !== 'seeker') {
+        return (
             <div className="w-full min-h-[80vh] flex flex-col justify-center items-center text-white p-6">
                 <div className="max-w-md w-full text-center p-8 rounded-2xl bg-zinc-900 border border-zinc-800 shadow-xl">
                     <div className="w-12 h-12 bg-amber-500/10 text-amber-500 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -27,8 +28,8 @@ const ApplyPage = async({params})=>{
                     <p className="text-zinc-400 text-sm leading-relaxed mb-6">
                         Only job seekers can apply for positions. Please sign in with a seeker account to proceed.
                     </p>
-                    <Link 
-                        href="/auth/signin" 
+                    <Link
+                        href="/auth/signin"
                         className="inline-block w-full px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-200 rounded-lg text-sm font-medium transition"
                     >
                         Switch Account
@@ -40,9 +41,21 @@ const ApplyPage = async({params})=>{
 
     const job = await getJobById(id)
 
+    const applications = await getApplicationsByApplicant(user?.id);
+    // console.log(applications)
+
+    const plan = {
+        name: 'Free',
+        maxApplicationPerMonth: 3
+    }
+
+
     return (
         <div className="pt-30">
-        <JobApply applicant={user} job={job}></JobApply>
+            <h2>You have applied so far: {applications.length} out of {plan.maxApplicationPerMonth} this month</h2>
+            {applications.length < plan.maxApplicationPerMonth && (
+                 <JobApply applicant={user} job={job}></JobApply>)
+            }
         </div>
     )
 }
