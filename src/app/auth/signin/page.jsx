@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Input, Button, Card, Alert } from "@heroui/react";
 // GravityUI icons
 import { Eye, EyeSlash, ArrowRight } from "@gravity-ui/icons";
@@ -10,7 +10,9 @@ import { authClient } from "@/lib/auth-client";
 
 export default function SignInPage() {
     const router = useRouter();
-
+    const searchParams = useSearchParams();
+    const redirectTo = searchParams.get('redirect') || "/";
+    
     // Form States
     const [formData, setFormData] = useState({ email: "", password: "" });
     const [isVisible, setIsVisible] = useState(false);
@@ -40,7 +42,6 @@ export default function SignInPage() {
             const { data, error } = await authClient.signIn.email({
                 email,
                 password,
-                callbackURL: "/",
             });
 
             if (error) {
@@ -56,7 +57,7 @@ export default function SignInPage() {
                 setFormData({ email: "", password: "" });
 
                 // Optional: Redirect fallback if callbackURL doesn't pick up natively
-                router.push("/");
+                router.push(redirectTo);
             }
         } catch (err) {
             setStatus({
