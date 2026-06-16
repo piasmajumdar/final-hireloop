@@ -1,36 +1,294 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🚀 HireLoop - AI-Powered Hiring Platform
 
-## Getting Started
+HireLoop is a modern full-stack recruitment platform designed to connect recruiters and job seekers in one seamless ecosystem. Recruiters can create company profiles, post jobs, and manage applicants, while job seekers can explore opportunities and apply for positions through an intuitive and responsive interface.
 
-First, run the development server:
+---
+
+## 🌐 Live Demo
+
+🔗 **Live Website:** 
+
+---
+
+## 📂 GitHub Repository
+
+🔗 **Client Repository:**  https://github.com/piasmajumdar/final-hireloop/
+
+🔗 **Server Repository:** [Server Repository Link]
+
+---
+
+# 📌 Project Purpose
+
+HireLoop aims to simplify the hiring process by providing a centralized platform where:
+
+* Recruiters can manage companies and job postings
+* Job seekers can discover and apply for jobs
+* Role-based authentication ensures secure access
+* Modern UI and responsive design improve user experience
+
+---
+
+# ✨ Key Features
+
+## 🔐 Authentication & Authorization
+
+* Email & Password Authentication using BetterAuth
+* Google Sign-In Integration
+* Role-Based Registration (Recruiter / Job Seeker)
+* Protected Dashboard Routes
+* JWT-Based Authentication
+* Secure Session Management
+
+## 🏢 Company Management
+
+* Create and manage company profiles
+* Upload company logos
+* Associate recruiters with companies
+* View and update company information
+
+## 💼 Job Management
+
+* Post new job openings
+* View active job listings
+* Manage recruiter-specific jobs
+* Job details page
+* Company-linked job posts
+* Application deadline management
+
+## 📊 Recruiter Dashboard
+
+* Dashboard statistics cards
+* Total Jobs Posted
+* Active Jobs
+* Closed Jobs
+* Applicant Overview
+* Responsive Sidebar Navigation
+
+## 🎨 User Experience
+
+* Responsive design for all devices
+* Dark Theme UI
+* Modern HeroUI Components
+* Interactive Dashboard Layout
+* Loading States
+* Form Validation
+* Toast Notifications
+
+---
+
+# 🛠️ Technologies Used
+
+## Frontend
+
+* Next.js 15
+* React.js
+* Tailwind CSS
+* HeroUI
+* Gravity UI Icons
+* Motion
+* BetterAuth
+* React Hook Form
+
+## Backend
+
+* Node.js
+* Express.js
+* MongoDB Atlas
+* JWT Authentication
+* CORS
+* dotenv
+
+## Deployment
+
+* Vercel
+* MongoDB Atlas
+
+---
+
+# 📦 NPM Packages
+
+### Frontend
+
+```bash
+npm install @heroui/react
+npm install better-auth
+npm install react-hook-form
+npm install motion
+npm install mongodb
+```
+
+### Backend
+
+```bash
+npm install express
+npm install mongodb
+npm install cors
+npm install dotenv
+npm install nodemon
+```
+
+---
+
+# 📁 Project Structure
+
+```bash
+src
+│
+├── app
+│   ├── dashboard
+│   ├── auth
+│   ├── jobs
+│   └── companies
+│
+├── components
+│   ├── shared
+│   ├── dashboard
+│   └── ui
+│
+├── lib
+│   ├── auth
+│   ├── core
+│   ├── actions
+│   └── services
+│
+├── providers
+├── hooks
+└── assets
+```
+
+---
+
+# 🔒 Role-Based Access
+
+### Recruiter
+
+* Create Company
+* Manage Company Profile
+* Post Jobs
+* View Posted Jobs
+* Access Recruiter Dashboard
+
+### Job Seeker
+
+* Browse Jobs
+* View Job Details
+* Apply for Jobs
+* Manage Applications
+
+---
+
+# ⚙️ Environment Variables
+
+### Frontend (.env.local)
+
+```env
+NEXT_PUBLIC_BASE_URL=your_server_url
+
+BETTER_AUTH_SECRET=your_secret
+BETTER_AUTH_URL=http://localhost:3000
+
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+```
+
+### Backend (.env)
+
+```env
+PORT=5000
+
+MONGO_DB_URI=your_mongodb_connection_string
+
+CLIENT_URL=http://localhost:3000
+```
+
+---
+
+# 🚀 Installation
+
+## Clone Client
+
+```bash
+git clone YOUR_CLIENT_REPOSITORY
+```
+
+## Clone Server
+
+```bash
+git clone YOUR_SERVER_REPOSITORY
+```
+
+## Install Dependencies
+
+```bash
+npm install
+```
+
+## Run Frontend
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Run Backend
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```bash
+nodemon index.js
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+# 📱 Responsive Design
 
-To learn more about Next.js, take a look at the following resources:
+Optimized for:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* 📱 Mobile
+* 📟 Tablet
+* 💻 Laptop
+* 🖥️ Desktop
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+# 🎯 Current Modules
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+✅ Authentication System
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+✅ Recruiter Dashboard
+
+✅ Company Management
+
+✅ Job Posting System
+
+✅ MongoDB Integration
+
+✅ JWT Authentication
+
+✅ Responsive Layout
+
+---
+
+# 🔮 Upcoming Features
+
+* Job Applications
+* Applicant Tracking System
+* Resume Upload
+* Admin Dashboard
+* Email Notifications
+* AI Resume Screening
+* Interview Scheduling
+
+---
+
+# 👨‍💻 Developer
+
+**Pias Majumdar**
+
+LinkedIn: [Add LinkedIn Link]
+
+GitHub: [Add GitHub Link]
+
+---
+
+# 📄 License
+
+This project is created for educational and portfolio purposes.
