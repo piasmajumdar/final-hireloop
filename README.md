@@ -283,9 +283,9 @@ Optimized for:
 
 **Pias Majumdar**
 
-LinkedIn: [Add LinkedIn Link]
+LinkedIn: https://www.linkedin.com/in/piasmajumdar/
 
-GitHub: [Add GitHub Link]
+GitHub: https://github.com/piasmajumdar/
 
 ---
 
