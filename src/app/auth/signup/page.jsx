@@ -38,6 +38,7 @@ export default function SignupPage() {
             setIsLoading(false);
             return;
         }
+        const plan = role === 'seeker' ? 'seeker_free' : 'recruiter_free';
 
         try {
             const { data, error } = await authClient.signUp.email({
@@ -45,6 +46,7 @@ export default function SignupPage() {
                 password,
                 name,
                 role,
+                plan
             });
 
             if (error) {
