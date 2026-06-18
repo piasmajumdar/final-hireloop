@@ -4,6 +4,7 @@ import { headers } from 'next/headers'
 import { stripe } from '../../../lib/stripe'
 import { PLAN_PRICE_ID } from '@/lib/stripe'
 import { getUserSession } from '@/lib/core/session'
+import { metadata } from 'motion/react-client'
 
 export async function POST(request) {
     try {
@@ -28,6 +29,7 @@ export async function POST(request) {
                 },
             ],
             mode: 'subscription',
+            metadata: {planId},
             success_url: `${origin}/plans/success?session_id={CHECKOUT_SESSION_ID}`,
         });
         return NextResponse.redirect(session.url, 303)
