@@ -12,7 +12,7 @@ export default function Navbar() {
 
     const { data: session, isPending } = useSession();
     console.log("Session data in Navbar:", session, "Is pending: ", isPending)
-    // const user = session?.user;
+    const user = session?.user;
 
     const handleSignOut = async () => {
         await signOut();
@@ -31,6 +31,21 @@ export default function Navbar() {
             href: "/plans",
         },
     ];
+
+    const dashboardLinks = {
+        seeker: '/dashboard/seeker',
+        recruiter: '/dashboard/recruiter',
+        admin: '/dashboard/admin'
+    }
+
+    if (user?.email) {
+        navItems.push(
+            {
+                label: 'Dashboard',
+                href: dashboardLinks[user?.role || 'seeker']
+            }
+        )
+    }
 
     const { scrollY } = useScroll()
     const [hidden, setHidden] = useState(false)
