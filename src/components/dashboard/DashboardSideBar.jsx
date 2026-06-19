@@ -43,6 +43,7 @@ export default async function DashboardSideBar() {
     }
 
     const navItems = navLinksMap[user?.role || 'seeker'];
+    
     const navContent = <nav className="flex flex-col gap-1">
         {navItems.map((item) => (
             <Link
